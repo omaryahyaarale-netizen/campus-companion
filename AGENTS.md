@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Chat replies stream as plain text from the `/api/chat` server route, which owns the persona prompt and input limits. Why: the model key and prompt stay server-side and the browser needs a raw streamed response.
+- Message/history limits live in `src/lib/chat-limits.ts` and are imported by both the browser and the route. Why: one source of truth for the bounds.
